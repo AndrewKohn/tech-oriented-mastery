@@ -1,0 +1,75 @@
+@use "../../styles/mixins";
+@import "../../styles/variables";
+
+.nav-btn {
+  width: 4rem;
+  height: 4rem;
+  background: none;
+  cursor: pointer;
+  z-index: 5;
+  border: none;
+
+  @include mixins.mediaQuery("sm") {
+    display: block;
+  }
+
+  @include mixins.mediaQuery("md") {
+    display: none;
+  }
+}
+
+.nav-btn-icon {
+  width: 100%;
+  height: 100%;
+  color: $text;
+}
+
+.backdrop {
+  position: fixed;
+  cursor: default;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba($secondary, 0.88);
+  z-index: 0;
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
+
+  @include mixins.mediaQuery("sm") {
+    display: block;
+  }
+
+  @include mixins.mediaQuery("md") {
+    display: none;
+  }
+}
+
+.nav-modal {
+  position: fixed;
+  @include mixins.setWidth();
+  @include mixins.displayFlex(center, center, column, nowrap);
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  padding: 10rem 0;
+  gap: 4rem;
+  background-color: $accent;
+  box-shadow: 5px 10px 50px 5px rgba(0, 0, 0, 0.35);
+  cursor: default;
+  z-index: 1;
+
+  .nav-link {
+    width: 85%;
+    text-align: center;
+  }
+
+  @include mixins.mediaQuery("sm") {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @include mixins.mediaQuery("md") {
+    display: none;
+  }
+}

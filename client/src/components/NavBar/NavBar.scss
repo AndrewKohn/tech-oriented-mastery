@@ -1,0 +1,87 @@
+@use "../../styles/mixins";
+@import "../../styles/variables";
+
+nav {
+  position: sticky;
+  @include mixins.displayFlex(flex-start, center, row, nowrap);
+  top: 0;
+  width: 100%;
+  background: linear-gradient(to bottom, rgba($text, 0.05), rgba($text, 0.025));
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
+
+  @include mixins.mediaQuery("sm") {
+    @include mixins.displayFlex(center, center, row, nowrap);
+  }
+}
+
+.nav-container {
+  @include mixins.displayFlex(space-between, center, row, nowrap);
+  @include mixins.setWidth();
+  padding: 1.2rem 3.6rem;
+
+  @include mixins.mediaQuery("md") {
+    padding: 1.8rem 3.6rem;
+  }
+}
+
+.nav-logo {
+  font-size: 3.2rem;
+}
+
+.nav-links {
+  display: none;
+  list-style-type: none;
+  gap: 2rem;
+
+  @include mixins.mediaQuery("md") {
+    @include mixins.displayFlex(flex-start, center, row, nowrap);
+  }
+}
+
+.nav-link {
+  background-color: rgba($primary, 0);
+  border: 2px solid $text;
+  border-radius: 7px;
+  padding: 0.6rem 1.4rem;
+  transition: all 0.1s linear;
+
+  &:link,
+  &:visited {
+    text-decoration: none;
+    color: $text;
+  }
+
+  &:hover {
+    color: $primary;
+
+    &:last-child {
+      color: $secondary;
+    }
+  }
+
+  &:active {
+    color: $text;
+    background-color: darken($primary, 15%);
+  }
+}
+
+.cta {
+  background-color: darken($primary, 15%);
+
+  &:hover {
+    background-color: darken($primary, 7.5%);
+  }
+
+  &:active {
+    background-color: darken($primary, 12.5%);
+  }
+}
+
+.current-page {
+  border-color: $primary;
+
+  &:last-child {
+    color: $secondary;
+  }
+}

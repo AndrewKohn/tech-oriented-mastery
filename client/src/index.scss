@@ -1,0 +1,110 @@
+@use "./styles/mixins";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Oswald:wght@200..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import "./styles/variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: $text;
+  font-family: "Inter", sans-serif;
+  /* font-family: sans-serif; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $background;
+  width: 100vw;
+  height: 100%;
+}
+
+main {
+  @include mixins.displayFlex(flex-start, flex-start, column, nowrap);
+  width: 100%;
+  height: 400rem;
+
+  @include mixins.mediaQuery("sm") {
+    @include mixins.displayFlex(flex-start, center, column, nowrap);
+  }
+}
+
+/* FONTS */
+h1,
+h2,
+h3,
+h4,
+.nav-text {
+  font-family: "Oswald";
+}
+
+.sub-heading--primary,
+.sub-heading--secondary {
+  font-family: "Raleway";
+}
+
+h1 {
+  font-size: clamp(5rem, 4vw, 8rem);
+}
+
+h2 {
+  font-size: clamp(3.6rem, 3vw, 5.6rem);
+}
+
+h3 {
+  font-size: clamp(2.8rem, 2vw, 4.8rem);
+}
+
+h4 {
+  font-size: clamp(2rem, 1vw, 3.2rem);
+}
+
+.sub-heading--primary {
+  font-size: 2.8rem;
+}
+
+.sub-heading--secondary {
+  font-size: 2rem;
+  letter-spacing: 0.25rem;
+}
+
+.nav-text {
+  letter-spacing: 0.33rem;
+}
+
+p {
+  letter-spacing: 1px;
+}
+
+/* PAGES */
+section {
+  @include mixins.displayFlex(space-between, center, row, nowrap);
+  @include mixins.setWidth();
+
+  @include mixins.mediaQuery("xs") {
+    border-color: orange;
+  }
+
+  @include mixins.mediaQuery("sm") {
+    border-color: yellow;
+  }
+
+  @include mixins.mediaQuery("md") {
+    border-color: green;
+  }
+
+  @include mixins.mediaQuery("lg") {
+    border-color: lightskyblue;
+  }
+
+  @include mixins.mediaQuery("xl") {
+    border-color: plum;
+  }
+}

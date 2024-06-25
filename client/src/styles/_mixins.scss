@@ -1,0 +1,29 @@
+@import "./variables";
+
+@mixin displayFlex($justify, $align, $direction, $wrap) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+}
+
+@mixin setWidth() {
+  width: 100%;
+  min-width: 32.5rem;
+  max-width: clamp(76.7rem, 50vw, 160rem);
+}
+
+@mixin mediaQuery($breakpoint) {
+  $min-width: map-get($breakpoints, $breakpoint);
+
+  @if $min-width {
+    @media screen and (min-width: $min-width) {
+      @content;
+    }
+  }
+
+  @else {
+    @error "Invalid breakpoint: '#{$breakpoint}'. Ensure breakpoints are one of: 'xs', 'sm', 'md', 'lg', 'xl'.";
+  }
+}
